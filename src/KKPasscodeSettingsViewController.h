@@ -31,14 +31,15 @@
 
 @end
 
-@interface KKPasscodeSettingsViewController : UITableViewController <UIActionSheetDelegate, KKPasscodeViewControllerDelegate> {
+@interface KKPasscodeSettingsViewController : UIViewController <UIActionSheetDelegate, KKPasscodeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
 	
   // delegate which notified then the passcode is turned on/off
 	id <KKPasscodeSettingsViewControllerDelegate> __unsafe_unretained _delegate;
 	
   // the erase content switch.
 	UISwitch* _eraseDataSwitch;
-	
+    UISwitch* _togglePassCodeSwitch;
+    
   // whatever the passcode lock is turned on or off
 	BOOL _passcodeLockOn;
   
@@ -47,5 +48,9 @@
 }
 
 @property (nonatomic, unsafe_unretained) id <KKPasscodeSettingsViewControllerDelegate> delegate;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (retain, nonatomic) IBOutlet UIButton *backButton;
+@property (retain, nonatomic) IBOutlet UINavigationItem *toolbar;
+- (IBAction)backButtonPressed:(id)sender;
 
 @end

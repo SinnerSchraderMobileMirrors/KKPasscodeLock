@@ -19,6 +19,7 @@
 #import "KKKeychain.h"
 #import "KKPasscodeSettingsViewController.h"
 #import "KKPasscodeLock.h"
+#import "AppSkin.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <AudioToolbox/AudioToolbox.h>
@@ -54,7 +55,7 @@
 	_enterPasscodeTableView.delegate = self;
 	_enterPasscodeTableView.dataSource = self;
 	_enterPasscodeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-	_enterPasscodeTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+	_enterPasscodeTableView.backgroundColor = [UIColor colorWithPatternImage:[AppSkin imageForGeneralBackgroundPattern]];
 	[self.view addSubview:_enterPasscodeTableView];
 	
 	_setPasscodeTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
@@ -62,7 +63,7 @@
 	_setPasscodeTableView.delegate = self;
 	_setPasscodeTableView.dataSource = self;
 	_setPasscodeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-	_setPasscodeTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+	_setPasscodeTableView.backgroundColor = [UIColor colorWithPatternImage:[AppSkin imageForGeneralBackgroundPattern]];
 	[self.view addSubview:_setPasscodeTableView];
 	
 	_confirmPasscodeTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
@@ -70,7 +71,7 @@
 	_confirmPasscodeTableView.delegate = self;
 	_confirmPasscodeTableView.dataSource = self;
 	_confirmPasscodeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-	_confirmPasscodeTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+	_confirmPasscodeTableView.backgroundColor = [UIColor colorWithPatternImage:[AppSkin imageForGeneralBackgroundPattern]];
 	[self.view addSubview:_confirmPasscodeTableView];
     
     _shouldReleaseFirstResponser = NO;
@@ -505,12 +506,11 @@
   [self.view addSubview:textField];
 	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, 70.0)];
 	UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 28.0, self.view.bounds.size.width, 30.0)];
-	headerLabel.textColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.4 alpha:1.0];
+	headerLabel.textColor = [AppSkin colorForBlueLightText];
 	headerLabel.backgroundColor = [UIColor clearColor];
 	headerLabel.textAlignment = UITextAlignmentCenter;
 	headerLabel.font = [UIFont boldSystemFontOfSize:17.0];
 	headerLabel.shadowOffset = CGSizeMake(0, 1.0);
-	headerLabel.shadowColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
 	
 	if ([textField isEqual:_setPasscodeTextField]) {
 		_passcodeConfirmationWarningLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 146.0, self.view.bounds.size.width, 30.0)];

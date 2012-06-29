@@ -32,7 +32,7 @@ static KKPasscodeLock *sharedLock = nil;
 	@synchronized(self) {
 		if (sharedLock == nil) {
 			sharedLock = [[self alloc] init];
-			sharedLock.eraseOption = YES;
+			sharedLock.eraseOption = NO;
 			sharedLock.attemptsAllowed = 5;
 		}
 	}
