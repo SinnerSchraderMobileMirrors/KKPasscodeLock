@@ -90,8 +90,8 @@
 	OSStatus res = SecItemCopyMatching((__bridge CFDictionaryRef)existsQueryDictionary, &data);
   
 	if (res == errSecSuccess) {
-        CFRelease(data);
 		NSString *string = [[NSString alloc] initWithData:(__bridge NSData*)data encoding:NSUTF8StringEncoding];
+        CFRelease(data);
 		return string;
 	} else {
 		NSAssert1(res == errSecItemNotFound, @"SecItemCopyMatching returned %d!", res);
